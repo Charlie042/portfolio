@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+A modern portfolio website built with Next.js and TypeScript.
 
-First, run the development server:
+## PDF Resume Management
+
+### Adding Your Resume PDF
+
+1. **File Placement**: Place your resume PDF file in the `public/` directory
+2. **Naming Convention**: Name the file `resume.pdf` (or update the path in `app/page.tsx`)
+3. **File Size**: Keep the PDF under 5MB for optimal loading performance
+4. **Format**: Ensure the PDF is properly formatted and accessible
+
+### Current Implementation
+
+- The resume link uses a robust utility function (`handleResumeView`) with multiple fallback strategies
+- Opens PDF in a new tab with proper security attributes
+- Uses three different approaches to handle popup blockers:
+  1. Standard `window.open()` with basic features
+  2. Alternative `window.open()` with additional window features
+  3. Programmatic link creation and click
+- Shows user-friendly error messages when all attempts fail
+- Never redirects the current tab away from the portfolio
+- Tracks PDF access for analytics (console logging)
+
+### Troubleshooting
+
+If the PDF doesn't load:
+
+1. Check that the file exists in `public/Charles_Ginger_Eke_CV.pdf`
+2. Verify the file isn't corrupted
+3. Check browser console for error messages
+4. Ensure the file size isn't too large
+5. If popup is blocked, try right-clicking the link and selecting "Open in new tab"
+6. Check browser settings to ensure popups are allowed for this site
+
+## Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The PDF will be automatically served from the `public/` directory when deployed.

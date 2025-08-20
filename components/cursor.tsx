@@ -27,7 +27,7 @@ export default function Cursor() {
     },[])
 
     return (
-      <div className="relative ">
+      <div className="relative hidden lg:block">
         <div
           ref={cursor}
           style={{

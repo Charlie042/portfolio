@@ -2,22 +2,25 @@
 import { useState } from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import Image from "next/image";
+import Link from "next/link";
 const Projects = ({
   title,
   company,
   description,
   technologies,
   image,
+  link,
 }: {
   title: string;
   company: string;
   description: string;
   technologies: string[];
   image: string;
+  link: string;
 }) => {
   const [isEntered, setIsEntered] = useState<number | null>(null);
   return (
-    <div className="flex gap-4 lg:justify-between flex-col-reverse lg:flex-row items-center group p-2 hover:bg-[#7c5157]/5 hover:border rounded-md hover:border-accent/50 transition-all duration-75">
+    <Link href={link} target="_blank" className="flex gap-4 lg:justify-between flex-col-reverse lg:flex-row items-center group p-2 hover:bg-[#7c5157]/5 hover:border rounded-md hover:border-accent/50 transition-all duration-75">
       <div className="self-start">
         <Image src={image} alt={title} width={150} height={150} className="w-full h-full object-cover" />
       </div>
@@ -47,7 +50,7 @@ const Projects = ({
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

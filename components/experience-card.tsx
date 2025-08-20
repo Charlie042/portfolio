@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { GoArrowUpRight } from "react-icons/go";
 
@@ -8,16 +9,18 @@ const ExperienceCard = ({
   description,
   technologies,
   date,
+  link,
 }: {
   title: string;
   company: string;
   description: string;
   technologies: string[];
   date: string;
+  link: string;
 }) => {
   const [isEntered, setIsEntered] = useState<number | null>(null);
   return (
-    <div className="flex gap-4 lg:justify-between items-center group p-2 hover:bg-[#7c5157]/5 hover:border rounded-md hover:border-accent/50 transition-all duration-75">
+    <Link href={link} target="_blank" className="flex gap-4 lg:justify-between items-center group p-2 hover:bg-[#7c5157]/5 hover:border rounded-md hover:border-accent/50 transition-all duration-75">
       <div className="self-start">
         <p className="group-hover:text-accent font-federant text-sm mt-1  w-20 ">
           {date}
@@ -49,7 +52,7 @@ const ExperienceCard = ({
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

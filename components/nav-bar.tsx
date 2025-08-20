@@ -24,8 +24,12 @@ const NavBar = ({ activeSection }: { activeSection: string }) => {
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-bold font-federant text-accent">Charles Ginger-Eke</h1>
-            <h2 className="text-lg font-semibold font-federant text-accent">Front End Engineer</h2>
+            <h1 className="text-4xl font-bold font-federant text-accent">
+              Charles Ginger-Eke
+            </h1>
+            <h2 className="text-lg font-semibold font-federant text-accent">
+              Front End Engineer
+            </h2>
           </div>
           <p className="text-md text-gray-700 font-federant max-w-[300px] w-full">
             I'm a frontend engineer with a passion for creating beautiful and
@@ -34,12 +38,14 @@ const NavBar = ({ activeSection }: { activeSection: string }) => {
         </div>
         <ul className="flex flex-col gap-4">
           {navItems.map((item, idx) => {
-            const isActive = `#${activeSection}` === item.href;
+            const isActive = activeSection && `#${activeSection}` === item.href;
             return (
               <div key={idx} className="flex items-center gap-2 group">
                 <div
-                  className={`w-10 h-[1px] bg-primary/30 rounded-full group-hover:bg-accent group-hover:w-15 group-hover:h-[2px] transition-all duration-300 ${
-                    isActive ? "bg-accent w-15 h-[2px]" : "bg-accent"
+                  className={`w-10 h-[1px] rounded-full transition-all duration-300 ${
+                    isActive
+                      ? "bg-accent w-15 h-[2px]"
+                      : "bg-primary/30 group-hover:bg-accent group-hover:w-15 group-hover:h-[2px]"
                   }`}
                 ></div>
                 <a
