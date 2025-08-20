@@ -70,7 +70,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${federant.variable} antialiased`}
       >
         <div className="max-w-[1200px] xl:mx-auto flex gap-10 lg:mx-5 ">
-          <div className="w-full sticky top-0 p-4">
+          <div className="w-full sticky top-0 p-4 hidden lg:block">
             <NavBar activeSection={activeSection} />
           </div>
           <div ref={scrollContainerRef} className="w-full py-4 overflow-y-auto scrollbar-none" style={{height: "100vh"}}>

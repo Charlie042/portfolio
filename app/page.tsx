@@ -7,6 +7,7 @@ import { experienceData, projectsData } from "@/components/data";
 import Link from "next/link";
 import { GoArrowUpRight } from "react-icons/go";
 import Projects from "@/components/projects";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
@@ -18,14 +19,37 @@ export default function Home() {
   }, []);
 
   return (
-    <main className=" w-full flex flex-col gap-10">
+    <main className=" w-full flex flex-col gap-10 px-5 py-5 sm:px-5 sm:py-5 md:px-10 md:py-20 lg:px-0 lg:py-0">
+      <section className="flex flex-col gap-10 lg:hidden">
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <h1 className="text-4xl font-bold font-federant text-accent">
+              Charles Ginger-Eke
+            </h1>
+            <h2 className="text-lg font-semibold font-federant text-accent">
+              Front End Engineer
+            </h2>
+          </div>
+          <p className="text-md text-gray-700 font-federant max-w-[300px] w-full">
+            I'm a frontend engineer with a passion for creating beautiful and
+            functional websites.
+          </p>
+        </div>
+        <div className="flex items-center gap-5">
+          <FaGithub className="text-2xl " />
+          <FaLinkedin className="text-2xl" />
+        </div>
+      </section>
       <Cursor />
       <section id="about" className="flex flex-col gap-10 text-[15px] py-20">
-        <p className="text-md text-primary w-full ">
-          I'm a  developer who loves building accessible, high-quality
-          interfaces where design meets engineering. I enjoy turning ideas into
-          user experiences that are both visually refined and technically sound,
-          with a focus on usability and performance.
+        <h2 className="backdrop-blur-sm text-2xl font-bold text-accent font-federant sticky top-0 lg:hidden">
+          About
+        </h2>
+        <p className="text-md text-primary w-full">
+          I'm a developer who loves building accessible, high-quality interfaces
+          where design meets engineering. I enjoy turning ideas into user
+          experiences that are both visually refined and technically sound, with
+          a focus on usability and performance.
         </p>
         <p className="text-md text-primary">
           Currently, I’m a Front-End Developer at{" "}
@@ -93,14 +117,16 @@ export default function Home() {
         }}
         className="my-20"
       >
-        <h2 className="text-2xl font-bold text-accent font-federant xl:opacity-0">Experience</h2>
+        <h2 className="sticky top-0 backdrop-blur-sm text-2xl font-bold text-accent font-federant lg:hidden">
+          Experience
+        </h2>
         <div className="flex flex-col gap-10 my-10">
           {experienceData.map((experience, idx) => (
             <div
               key={idx}
               onMouseEnter={() => setIsEntered(idx)}
               onMouseLeave={() => setIsEntered(null)}
-              className={`transition-all duration-300 ${
+              className={`transition-all duration-300  ${
                 isHovered && isEntered !== idx ? "opacity-60" : "opacity-100"
               }`}
             >
@@ -118,14 +144,18 @@ export default function Home() {
         </Link>
       </section>
 
-
-      <section id="projects"  onMouseEnter={() => setIsHoveredProjects(true)} onMouseLeave={() => {
-        setIsHoveredProjects(false);
-        setIsEnteredProjects(null);
-      }}
-      className={`my-20 flex flex-col gap-10`}
+      <section
+        id="projects"
+        onMouseEnter={() => setIsHoveredProjects(true)}
+        onMouseLeave={() => {
+          setIsHoveredProjects(false);
+          setIsEnteredProjects(null);
+        }}
+        className={`my-20 flex flex-col gap-10`}
       >
-        <h2 className="text-2xl font-bold text-accent font-federant xl:opacity-0 ">Projects</h2>
+        <h2 className="sticky top-0 backdrop-blur-sm text-2xl font-bold text-accent font-federant lg:hidden">
+          Projects
+        </h2>
         <div className="text-md text-primary flex flex-col gap-10">
           {projectsData.map((project, idx) => (
             <div
@@ -133,7 +163,9 @@ export default function Home() {
               onMouseEnter={() => setIsEnteredProjects(idx)}
               onMouseLeave={() => setIsEnteredProjects(null)}
               className={`transition-all duration-300 ${
-                isHoveredProjects && isEnteredProjects !== idx ? "opacity-60" : "opacity-100"
+                isHoveredProjects && isEnteredProjects !== idx
+                  ? "opacity-60"
+                  : "opacity-100"
               }`}
             >
               <Projects {...project} />
