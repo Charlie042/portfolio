@@ -22,7 +22,7 @@ const Projects = ({
   return (
     <Link href={link} target="_blank" className="flex gap-4 lg:justify-between flex-col-reverse lg:flex-row items-center group p-2 hover:bg-[#7c5157]/5 hover:border rounded-md hover:border-accent/50 transition-all duration-75">
       <div className="self-start">
-        <Image src={image} alt={title} width={150} height={150} className="w-full h-full object-cover" />
+        <Image src={image} alt={title} width={150} height={150} priority className="w-full h-full object-cover" />
       </div>
       <div className="flex flex-col gap-2">
         <div>

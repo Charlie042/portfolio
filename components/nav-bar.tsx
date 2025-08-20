@@ -66,13 +66,13 @@ const NavBar = ({ activeSection }: { activeSection: string }) => {
 
       <div className="flex items-center gap-5">
         <Link href="https://github.com/Charlie042" target="_blank">
-          <FaGithub className="text-2xl " />
+          <FaGithub className="text-2xl hover:text-accent transition-all duration-300" />
         </Link>
         <Link
           href="https://www.linkedin.com/in/ginger-eke-charles/"
           target="_blank"
         >
-          <FaLinkedin className="text-2xl" />
+          <FaLinkedin className="text-2xl hover:text-accent transition-all duration-300" />
         </Link>
       </div>
     </nav>

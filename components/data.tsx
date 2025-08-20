@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export const experienceData = [
   {
     title: "Front-End Engineer",
@@ -48,6 +50,33 @@ export const experienceData = [
 
 export const projectsData = [
   {
+    title: "FUTO portal",
+    company: "Tenece",
+    description:
+      "Maintained and developed new features for the university’s school portal, including student onboarding, course registration, lecturer and dean management, result processing, and faculty administration.",
+    technologies: ["React", "CSS", "Redux", "tanstack-form", "tanstack-query"],
+    image: "/futo-portal.png",
+    link: "https://portal.futo.edu.ng/",
+  },
+  {
+    title: "UNN portal",
+    company: "Tenece",
+    description:
+      "Maintained and developed new features for the university’s school portal, including student onboarding, course registration, lecturer and dean management, result processing, and faculty administration.",
+    technologies: ["React", "CSS", "Redux", "tanstack-form", "tanstack-query"],
+    image: "/unn-portal.png",
+    link: "https://unnportal.unn.edu.ng/",
+  },
+  {
+    title: "Resource Edge",
+    company: "Tenece",
+    description:
+      "A staff management platform built with Next.js, designed to streamline HR processes such as employee onboarding, leave management, and overall staff administration.",
+    technologies: ["Next.js", "TailwindCSS", "RTK Query"],
+    image: "/resoourceEdg.png",
+    link: "https://resourceedge.netlify.app/",
+  },
+  {
     title: "Serene",
     company: "Personal Project",
     description:
@@ -58,7 +87,6 @@ export const projectsData = [
       "Typescript",
       "Next.js",
       "TailwindCSS",
-      
     ],
     image: "/serene.png",
     link: "https://serene-ivory.vercel.app/",
@@ -74,7 +102,6 @@ export const projectsData = [
       "Typescript",
       "Next.js",
       "TailwindCSS",
-    
     ],
     image: "/pauline-projects.png",
     link: "https://pauline-snowy.vercel.app/",
@@ -90,7 +117,6 @@ export const projectsData = [
       "Typescript",
       "Next.js",
       "TailwindCSS",
-      
     ],
     image: "/uma-porrtfolio.png",
     link: "",
