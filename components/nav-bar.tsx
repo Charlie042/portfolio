@@ -65,8 +65,15 @@ const NavBar = ({ activeSection }: { activeSection: string }) => {
       </div>
 
       <div className="flex items-center gap-5">
-        <FaGithub className="text-2xl " />
-        <FaLinkedin className="text-2xl" />
+        <Link href="https://github.com/Charlie042" target="_blank">
+          <FaGithub className="text-2xl " />
+        </Link>
+        <Link
+          href="https://www.linkedin.com/in/ginger-eke-charles/"
+          target="_blank"
+        >
+          <FaLinkedin className="text-2xl" />
+        </Link>
       </div>
     </nav>
   );
