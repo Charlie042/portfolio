@@ -93,6 +93,6 @@ export const projectsData = [
       
     ],
     image: "/uma-porrtfolio.png",
-    link: "https://umas-portfolio.vercel.app/",
+    link: "",
   },
 ];
