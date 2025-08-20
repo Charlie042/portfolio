@@ -4,6 +4,8 @@
   --background: #171717;
   --foreground: #ffffff;
   --primary: #101010;
+  --accent: #7b1220;
+  --balance: #f8f5ef;
 }
 
 @theme inline {
@@ -13,6 +15,8 @@
   --font-mono: var(--font-geist-mono);
   --font-roboto: var(--font-roboto);
   --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-balance: var(--balance);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,5 +30,15 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-roboto);  
+  font-family: var(--font-roboto);
+}
+
+/* Federant font utility classes */
+.font-federant {
+  font-family: var(--font-federant), serif;
+}
+
+.scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
 }

@@ -1,39 +1,57 @@
 "use client";
-import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { handleInitialHash } from "@/lib/utils";
+import ExperienceCard from "@/components/experience-card";
+import Cursor from "@/components/cursor";
+import { experienceData, projectsData } from "@/components/data";
+import Link from "next/link";
+import { GoArrowUpRight } from "react-icons/go";
+import Projects from "@/components/projects";
 
 export default function Home() {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isEntered, setIsEntered] = useState<number | null>(null);
+  const [isHoveredProjects, setIsHoveredProjects] = useState(false);
+  const [isEnteredProjects, setIsEnteredProjects] = useState<number | null>(null);
   useEffect(() => {
     handleInitialHash();
   }, []);
 
   return (
-    <main className=" w-full flex flex-col gap-10 overflow-y-auto h-screen">
-      <section id="about" className="flex flex-col gap-10">
-        <p className="text-md text-gray-700 w-full">
-          I'm a frontend developer who loves building accessible, high-quality
+    <main className=" w-full flex flex-col gap-10">
+      <Cursor />
+      <section id="about" className="flex flex-col gap-10 text-[15px] py-20">
+        <p className="text-md text-primary w-full ">
+          I'm a  developer who loves building accessible, high-quality
           interfaces where design meets engineering. I enjoy turning ideas into
           user experiences that are both visually refined and technically sound,
           with a focus on usability and performance.
         </p>
-        <p className="text-md text-gray-700 ">
-          Currently, I’m a Front-End Developer at Tenece, where I focus on
-          building and maintaining the school management platform used by
-          universities. I work on developing features that support students,
-          lecturers, faculty deans, and administrators, ensuring the platform
-          runs smoothly for academic and administrative needs. My role also
-          includes improving workflows like student fee payments and overall
-          usability to create a seamless experience for all users.
+        <p className="text-md text-primary">
+          Currently, I’m a Front-End Developer at{" "}
+          <a
+            href="https://tenece.com"
+            target="_blank"
+            className="text-accent font-semibold hover:text-accent/80 font-federant"
+          >
+            Tenece
+          </a>
+          , where I focus on building and maintaining the school management
+          platform used by universities. I work on developing features that
+          support students, lecturers, faculty deans, and administrators,
+          ensuring the platform runs smoothly for academic and administrative
+          needs. My role also includes improving workflows like student fee
+          payments and overall usability to create a seamless experience for all
+          users.
         </p>
-        <p className="text-md text-gray-700 ">
+        <p className="text-md text-primary">
           In the past, i have worked a variety of projects, I’ve had the
           opportunity to contribute to early-stage start-ups, working on
           projects that span digital marketing and automation. At{" "}
           <a
             href="https://fuiziondot.com"
             target="_blank"
-            className="text-primary/70 font-semibold hover:text-black"
+            className="text-accent font-semibold hover:text-accent/80 font-federant"
           >
             Fuiziondot
           </a>
@@ -42,7 +60,7 @@ export default function Home() {
           <a
             href="https://www.serlzo.com/"
             target="_blank"
-            className="text-primary/70 font-semibold hover:text-black"
+            className="text-accent font-semibold hover:text-accent/80 font-federant"
           >
             Selzo
           </a>
@@ -51,7 +69,7 @@ export default function Home() {
           <a
             href="https://serene-ivory.vercel.app/"
             target="_blank"
-            className="text-primary/70 font-semibold hover:text-black"
+            className="text-accent font-semibold hover:text-accent/80 font-federant"
           >
             Serene
           </a>
@@ -60,11 +78,68 @@ export default function Home() {
           community and support, inspired by the principles of Alcoholics
           Anonymous.
         </p>
-        <p>
+        <p className="text-md text-primary text-[15px]">
           In my spare time, I enjoy reading good books, watching movies,. I also
           enjoy learning new technologies and building personal projects to
           improve my skills.
         </p>
+      </section>
+      <section
+        id="experience"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => {
+          setIsHovered(false);
+          setIsEntered(null);
+        }}
+        className="my-20"
+      >
+        <h2 className="text-2xl font-bold text-accent font-federant xl:opacity-0">Experience</h2>
+        <div className="flex flex-col gap-10 my-10">
+          {experienceData.map((experience, idx) => (
+            <div
+              key={idx}
+              onMouseEnter={() => setIsEntered(idx)}
+              onMouseLeave={() => setIsEntered(null)}
+              className={`transition-all duration-300 ${
+                isHovered && isEntered !== idx ? "opacity-60" : "opacity-100"
+              }`}
+            >
+              <ExperienceCard {...experience} />
+            </div>
+          ))}
+        </div>
+        <Link
+          href="/resume.pdf"
+          target="_blank"
+          className="flex items-center gap-2 text-sm text-accent font-semibold hover:text-accent/80 group"
+        >
+          View Full Resume{" "}
+          <GoArrowUpRight className="w-3 h-3 group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300" />
+        </Link>
+      </section>
+
+
+      <section id="projects"  onMouseEnter={() => setIsHoveredProjects(true)} onMouseLeave={() => {
+        setIsHoveredProjects(false);
+        setIsEnteredProjects(null);
+      }}
+      className={`my-20 flex flex-col gap-10`}
+      >
+        <h2 className="text-2xl font-bold text-accent font-federant xl:opacity-0 ">Projects</h2>
+        <div className="text-md text-primary flex flex-col gap-10">
+          {projectsData.map((project, idx) => (
+            <div
+              key={idx}
+              onMouseEnter={() => setIsEnteredProjects(idx)}
+              onMouseLeave={() => setIsEnteredProjects(null)}
+              className={`transition-all duration-300 ${
+                isHoveredProjects && isEnteredProjects !== idx ? "opacity-60" : "opacity-100"
+              }`}
+            >
+              <Projects {...project} />
+            </div>
+          ))}
+        </div>
       </section>
     </main>
   );
