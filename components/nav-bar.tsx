@@ -2,8 +2,18 @@
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { scrollToSection } from "@/lib/utils";
+import Image from "next/image";
+import { useMediaQuery } from "usehooks-ts";
+import { useEffect, useState } from "react";
 
 const NavBar = ({ activeSection }: { activeSection: string }) => {
+  const [isMounted, setIsMounted] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const navItems = [
     {
       label: "About",
@@ -62,8 +72,23 @@ const NavBar = ({ activeSection }: { activeSection: string }) => {
             );
           })}
         </ul>
+        {isMounted && isDesktop && (
+          <div className=" h-50 relative group w-50">
+            <div className="border-2 max-w-[200px] max-h-[200px] w-full  border-accent overflow-hidden group-hover:-translate-x-1 transition-all duration-500 cursor-pointer">
+              <div className="absolute inset-0 bg-accent/30 group-hover:bg-transparent transition-all duration-500"></div>
+              <Image
+                src="/profile.png"
+                alt="profile"
+                width={100}
+                height={100}
+                priority
+                className="object-contain w-full h-full overflow-hidden inset-0 bg-accent group-hover:bg-primary"
+              />
+            </div>
+            {/* <div className="border-2  max-w-[200px] max-h-[200px] w-full h-full border-accent absolute -right-5 top-3 group-hover:translate-y-1 transition-all duration-500 -z-10"></div> */}
+          </div>
+        )}
       </div>
-
       <div className="flex items-center gap-5">
         <Link href="https://github.com/Charlie042" target="_blank">
           <FaGithub className="text-2xl hover:text-accent transition-all duration-300" />
